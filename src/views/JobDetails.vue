@@ -1,0 +1,13 @@
+<template>
+  <h1>Job Detail</h1>
+  <p>job id is {{ id }}</p>
+</template>
+
+<script>
+export default {
+  props: ["id"],
+};
+</script>
+
+<style>
+</style>
