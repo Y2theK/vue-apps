@@ -78,3 +78,8 @@ json-server can watch json file and give url for json resources in its server
 create data/db.json and fill json array
 install json-server/ npm install json-server
 watch file with json-serve/ npx json-server --watch data/db.json
+
+composition api
+================
+group logic together in a setup() function
+eassily create reusable function/logic
