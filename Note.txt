@@ -1,0 +1,32 @@
+composition api
+===============
+write group logic/function together in a setup() function
+easily create usuable code and can import from other component
+setup() function come before lifecycle hooks and others
+
+setup() function
+================
+inside setup() function, you can define whatever you want and must return it as an object to use in template
+let name = 'y2k',age = 20;
+return {name : name , age : age }   / return {name , age }
+but name and age in setup() are not reactive value by default like in  data() function
+
+template ref
+============
+this.$ref.name in data()
+
+in setup()
+import {ref} from 'vue'
+//null is value of ref
+//const p mean ref is const but value can reactive
+const  p = ref(null)
+
+<p ref="p">blah blah</p>
+
+to access <p> tag p / p.value
+to add classlist / can use normal js class
+p.value.classList.add('actives')
+
+must return p before use 
+return p ma (p / p.value) ko use lo ya
+
