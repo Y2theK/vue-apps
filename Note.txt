@@ -51,3 +51,12 @@ using ref for reactivity
 };
 <input type="text" v-model="name" />
  <p ref="p">name : {{ name }} , age : {{ age }}</p>
+
+ref vs reactive
+=================
+// no need to use ninjaTwo.value.name  like in ref/ just use ninjaTwo.name and can auto acces value directly
+//reactive cannot use with primitive data type like in ref
+    const ninjaTwo = reactive("mario");  => mario is a primitive value in reactive and reactive cannot update mario while ref.value.name can 
+
+ref also work better with external composition function
+they retain their reactivity 

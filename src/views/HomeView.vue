@@ -1,33 +1,32 @@
 <template>
   <div class="home">
-    <h3>home</h3>
-    <p ref="p">name : {{ name }} , age : {{ age }}</p>
-
-    <button @click="handleClick">click me</button>
-    <input type="text" v-model="name" />
-    <button @click="age++">add 1 to age</button>
+    <h3>ref</h3>
+    <p>name : {{ ninjaOne }} , age : {{ ninjaOne }}</p>
+    <button @click="updateNinjaOne">updateNinjaOne</button>
+    <h3>reactive</h3>
+    <p>name : {{ ninjaTwo }} , age : {{ ninjaTwo }}</p>
+    <button @click="updateNinjaTwo">updateNinjaTwo</button>
   </div>
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { reactive, ref } from "@vue/reactivity";
 export default {
   name: "HomeView",
-
+  // ref vs reactive
+  // no need to use ninjaTwo.value.name  like in ref/ just use ninjaTwo.name and can auto acces value
   setup() {
-    //yyk is value of ref
-    //(const name) means ref is const but value can be chanage/ reactive
-    const name = ref("yyk");
-    const age = ref(20);
-
-    const handleClick = () => {
-      // to access ref.value in setup(), use refName.value
-      // but to need to use name.value  in template, it auto output {{ value of ref in template }}
-      //can use v-model="ref" for input reactivity
-      name.value = "asdf";
-      age.value = 22;
+    const ninjaOne = ref("ref");
+    //reactive cannot change with primitive data type like in ref
+    const ninjaTwo = reactive("reactive");
+    const updateNinjaOne = () => {
+      ninjaOne.value = "ref updated";
     };
-    return { name, age, handleClick };
+    const updateNinjaTwo = () => {
+      // no need to use ninjaTwo.value.name / just use ninjaTwo.name and can auto acces value
+      ninjaTwo = "reactive updated";
+    };
+    return { ninjaOne, ninjaTwo, updateNinjaOne, updateNinjaTwo };
   },
 };
 </script>
