@@ -6,19 +6,21 @@ setup() function come before lifecycle hooks and others
 
 setup() function
 ================
-inside setup() function, you can define whatever you want and must return it as an object to use in template
+inside setup() function, you can define whatever you want and
+must return it as an object to use in template
 let name = 'y2k',age = 20;
-return {name : name , age : age }   / return {name , age }
+return {name : name , age : age }   / shorthand = return {name , age }
 but name and age in setup() are not reactive value by default like in  data() function
 
 template ref
 ============
-this.$ref.name in data()
+this.$ref.name in data() <p ref = "name">name </p>
 
 in setup()
+==========
 import {ref} from 'vue'
 //null is value of ref
-//const p mean ref is const but value can reactive
+//const p means ref is const but value can be chanage/ reactive
 const  p = ref(null)
 
 <p ref="p">blah blah</p>
@@ -30,3 +32,22 @@ p.value.classList.add('actives')
 must return p before use 
 return p ma (p / p.value) ko use lo ya
 
+using ref for reactivity
+========================
+  //yyk is value of ref
+    //(const name) means ref is const but value can be chanage/ reactive
+    const name = ref("yyk");
+    const age = ref(20);
+
+    const handleClick = () => {
+      // to access ref.value in setup(), use refName.value
+      // but to need to use name.value  in template, it auto output {{ value of ref in template }}
+      //can use v-model="ref" for input reactivity
+      name.value = "asdf";
+      age.value = 22;
+    };
+    return { name, age, handleClick };
+  },
+};
+<input type="text" v-model="name" />
+ <p ref="p">name : {{ name }} , age : {{ age }}</p>

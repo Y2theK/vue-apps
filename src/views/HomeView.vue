@@ -4,6 +4,8 @@
     <p ref="p">name : {{ name }} , age : {{ age }}</p>
 
     <button @click="handleClick">click me</button>
+    <input type="text" v-model="name" />
+    <button @click="age++">add 1 to age</button>
   </div>
 </template>
 
@@ -11,31 +13,21 @@
 import { ref } from "@vue/reactivity";
 export default {
   name: "HomeView",
-  // created() {
-  //   console.log("created");
-  // },
-  // mounted() {
-  //   console.log("mounted");
-  // },
 
   setup() {
-    console.log("setup");
-    let name = "mario";
-    let age = 30;
-    //null is value of ref
-    //const p mean ref is const but value can reactive
-    const p = ref(null);
-    console.log(p.value);
-    // return { name: name, age: age };
-    //property shorthand
+    //yyk is value of ref
+    //(const name) means ref is const but value can be chanage/ reactive
+    const name = ref("yyk");
+    const age = ref(20);
+
     const handleClick = () => {
-      console.log("you click me");
-      //not change because it is compostion  not reactive by default
-      name = "gigi";
-      console.log(p.value);
-      p.value.textContent = "hello reactive";
+      // to access ref.value in setup(), use refName.value
+      // but to need to use name.value  in template, it auto output {{ value of ref in template }}
+      //can use v-model="ref" for input reactivity
+      name.value = "asdf";
+      age.value = 22;
     };
-    return { name, age, handleClick, p };
+    return { name, age, handleClick };
   },
 };
 </script>
