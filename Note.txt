@@ -60,3 +60,10 @@ ref vs reactive
 
 ref also work better with external composition function
 they retain their reactivity 
+
+ //using computed
+    const filteringName = computed(() => {
+      return names.value.filter((name) => {
+        return name.includes(search.value);
+      });
+    });

@@ -1,32 +1,30 @@
 <template>
   <div class="home">
-    <h3>ref</h3>
-    <p>name : {{ ninjaOne }} , age : {{ ninjaOne }}</p>
-    <button @click="updateNinjaOne">updateNinjaOne</button>
-    <h3>reactive</h3>
-    <p>name : {{ ninjaTwo }} , age : {{ ninjaTwo }}</p>
-    <button @click="updateNinjaTwo">updateNinjaTwo</button>
+    <h3>Filtering Names by input</h3>
+    <input type="text" v-model="search" placeholder="search names" />
+    <p>Search Terms : {{ search }}</p>
+    <div v-for="name in filteringName" :key="name">
+      <p>{{ name }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-import { reactive, ref } from "@vue/reactivity";
+import { ref } from "@vue/reactivity";
+import { computed } from "@vue/runtime-core";
 export default {
   name: "HomeView",
-  // ref vs reactive
-  // no need to use ninjaTwo.value.name  like in ref/ just use ninjaTwo.name and can auto acces value
+
   setup() {
-    const ninjaOne = ref("ref");
-    //reactive cannot change with primitive data type like in ref
-    const ninjaTwo = reactive("reactive");
-    const updateNinjaOne = () => {
-      ninjaOne.value = "ref updated";
-    };
-    const updateNinjaTwo = () => {
-      // no need to use ninjaTwo.value.name / just use ninjaTwo.name and can auto acces value
-      ninjaTwo = "reactive updated";
-    };
-    return { ninjaOne, ninjaTwo, updateNinjaOne, updateNinjaTwo };
+    const search = ref("");
+    const names = ref(["mario", "uno", "john", "doe", "coopa", "y2k"]);
+    //using computed
+    const filteringName = computed(() => {
+      return names.value.filter((name) => {
+        return name.includes(search.value);
+      });
+    });
+    return { names, search, filteringName };
   },
 };
 </script>
