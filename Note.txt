@@ -67,3 +67,22 @@ they retain their reactivity
         return name.includes(search.value);
       });
     });
+
+watch(watch-parameter,callback func) and watchEffect(callback func) 
+===================================================================
+ const search = ref("");
+    const names = ref(["mario", "uno", "john", "doe", "coopa", "y2k"]);
+    //watch value everytimes they change
+    //need to pass parameter to watch
+    //search is a watched parameter and watch func ran when value of search chaange
+    watch(search, () => {
+      console.log("watch func ran");
+    });
+
+    //ran initally first
+    //no need to pass parameter to watch / it watch all the value which used inside its function
+    //watch value change inside its function and watcheffect func ran when value of used inside its func changes
+    //search is used in its function and it watch search initially first and run everytimes search change
+    watchEffect(() => {
+      console.log("watch effect func ran" + search.value);
+    });
