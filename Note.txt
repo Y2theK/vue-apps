@@ -99,3 +99,15 @@ Props
     console.log(props);
     return { name, age, gender };
   },
+
+life cycle hooks in composition api()
+======================================
+    onMounted(() => {
+      console.log("mounted");
+    });
+    onUnmounted(() => {
+      console.log("unmounted");
+    });
+    onUpdated(() => {
+      console.log("updated");
+    });
