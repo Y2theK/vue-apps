@@ -1,38 +1,32 @@
 <template>
   <div class="home">
-    <h3>Filtering Names by input</h3>
-    <input type="text" v-model="search" placeholder="search names" />
-    <p>Search Terms : {{ search }}</p>
-    <div v-for="name in names" :key="name">
-      <p>{{ name }}</p>
+    <h3>Props</h3>
+    <div v-for="person in persons" :key="person.name">
+      <detail-view :person="person"></detail-view>
     </div>
   </div>
 </template>
 
 <script>
 import { ref } from "@vue/reactivity";
-import { computed, watch, watchEffect } from "@vue/runtime-core";
+import DetailView from "./DetailView.vue";
 export default {
   name: "HomeView",
+  components: { DetailView },
 
   setup() {
-    const search = ref("");
-    const names = ref(["mario", "uno", "john", "doe", "coopa", "y2k"]);
-    //watch value everytimes they change
-    //need to pass parameter to watch
-    //search is a watched parameter and watch func ran when value of search chaange
-    watch(search, () => {
-      console.log("watch func ran");
-    });
+    const persons = ref([
+      {
+        name: "joe",
+        age: 22,
+        gender: "male",
+        bio: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste sequi numquam ea molestiae cupiditate id facilis sint nisi natus tempore! Esse repudiandae fuga doloremque in numquam cum iure minus labore?",
+      },
+      { name: "doe", age: 23, gender: "male", bio: "lorem" },
+      { name: "fee", age: 21, gender: "female", bio: "ispam" },
+    ]);
 
-    //ran initally first
-    //no need to pass parameter to watch / it watch all the value which used inside its function
-    //watch value change inside its function and watcheffect func ran when value of used inside its func changes
-    //search is used in its function and it watch search initially first and run everytimes search change
-    watchEffect(() => {
-      console.log("watch effect func ran" + search.value);
-    });
-    return { names, search };
+    return { persons };
   },
 };
 </script>

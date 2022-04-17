@@ -86,3 +86,16 @@ watch(watch-parameter,callback func) and watchEffect(callback func)
     watchEffect(() => {
       console.log("watch effect func ran" + search.value);
     });
+
+Props
+=====
+//same as options api, to use props in setup() need to pass props parameter and
+//access props.propsName
+  props: ["person"],
+  setup(props) {
+    let name = props.person.name;
+    let age = props.person.age;
+    let gender = props.person.gender;
+    console.log(props);
+    return { name, age, gender };
+  },
