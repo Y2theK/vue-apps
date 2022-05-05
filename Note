@@ -1,6 +1,6 @@
 Vue Router
 ==========
-router/index.js မာ router ကိုကို export
+router/index.js မာ router ကို export
 app.vue mr import ပီးပြန်သုံး
 const routes = [
   {
@@ -77,7 +77,7 @@ json server
 json-server can watch json file and give url for json resources in its server
 create data/db.json and fill json array
 install json-server/ npm install json-server
-watch file with json-serve/ npx json-server --watch data/db.json
+watch file with json-server/ npx json-server --watch data/db.json
 
 composition api
 ================
