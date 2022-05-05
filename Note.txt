@@ -55,13 +55,14 @@ using ref for reactivity
 ref vs reactive
 =================
 // no need to use ninjaTwo.value.name  like in ref/ just use ninjaTwo.name and can auto acces value directly
-//reactive cannot use with primitive data type like in ref
+//reactive cannot use with primitive data type (number,string,boolean) like in ref
     const ninjaTwo = reactive("mario");  => mario is a primitive value in reactive and reactive cannot update mario while ref.value.name can 
 
 ref also work better with external composition function
 they retain their reactivity 
 
  //using computed
+ =================
     const filteringName = computed(() => {
       return names.value.filter((name) => {
         return name.includes(search.value);
@@ -78,7 +79,8 @@ watch(watch-parameter,callback func) and watchEffect(callback func)
     watch(search, () => {
       console.log("watch func ran");
     });
-
+watchEffect(callback func) 
+=========================
     //ran initally first
     //no need to pass parameter to watch / it watch all the value which used inside its function
     //watch value change inside its function and watcheffect func ran when value of used inside its func changes
@@ -87,9 +89,16 @@ watch(watch-parameter,callback func) and watchEffect(callback func)
       console.log("watch effect func ran" + search.value);
     });
 
+// to stop watching, assign watch function with a variable and call that function
+const stopWatchEff = watchEffect(() => {
+      console.log("watch effect func ran" + search.value);
+    });
+
+stopWatchEff()
 Props
 =====
-//same as options api, to use props in setup() need to pass props parameter and
+//same as options api,
+//to use props in setup(), need to pass props parameter and
 //access props.propsName
   props: ["person"],
   setup(props) {
@@ -111,3 +120,8 @@ life cycle hooks in composition api()
     onUpdated(() => {
       console.log("updated");
     });
+
+  composable vue 
+  ==============
+  setup() htae ka kg twy ko composable loat lox ya
+  reusable / useful/ phit
