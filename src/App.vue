@@ -1,30 +1,33 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <Menu />
+
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit suscipit
+    maxime itaque. Iste, non eveniet dignissimos repellat obcaecati recusandae
+    labore delectus nostrum libero eligendi consequuntur cumque, quis
+    doloremque, asperiores cupiditate.
+  </p>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
+<script>
+import Menu from "./components/Menu.vue";
+import Product from "./views/Product.vue";
+import Profile from "./views/Profile.vue";
+
+export default {
+  name: "App",
+  components: {
+    Menu,
+    Product,
+    Profile,
+  },
+  data() {
+    return {
+      message: "hello from vue shop",
+    };
+  },
+};
+</script>
+
