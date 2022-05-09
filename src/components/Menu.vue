@@ -15,31 +15,34 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <!-- <router-link to="/">
+          <router-link :to="{ name: 'home' }">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li></router-link
           >
-          <router-link to="/about">
+          <router-link :to="{ name: 'about' }">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">About</a>
+            </li></router-link
+          >
+          <router-link :to="{ name: 'product' }">
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="#">Product</a>
             </li></router-link
-          > -->
+          >
 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Logout</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Login</a>
-          </li>
+          <router-link :to="{ name: 'profile' }">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Profile</a>
+            </li>
+          </router-link>
+          <router-link :to="{ name: 'login' }">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Login</a>
+            </li></router-link
+          >
         </ul>
-        <!-- <router-view></router-view> -->
+
         <!-- <form class="d-flex">
           <input
             class="form-control me-2"
