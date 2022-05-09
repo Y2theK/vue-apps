@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
-import Product from "../views/Product.vue";
+import ProductHome from "../views/ProductHome.vue";
+import ProductDetail from "../views/ProductDetail.vue";
 import Profile from "../views/Profile.vue";
 import Login from "../views/Login.vue";
 
@@ -24,7 +25,13 @@ const routes = [
   {
     path: "/product",
     name: "product",
-    component: Product,
+    component: ProductHome,
+  },
+  {
+    path: "/product/:id",
+    name: "product-detail",
+    component: ProductDetail,
+    props: true,
   },
   {
     path: "/Profile",
