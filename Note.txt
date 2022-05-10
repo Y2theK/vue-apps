@@ -1,0 +1,38 @@
+middleware or navigation guard
+==============================
+global middleware (twr mae route tine ko middleware khan)
+=================
+router ko export m loat khin mr 
+to => yout mae route
+from => twr chin tae route
+next(); => middleware pass yin twr mae function
+next()  => m pr yin bl ma m twr
+
+router.beforeEach((to,from,next)=>{
+  //write middleware code //auth code
+  next();
+ 
+})
+export default router
+
+
+route middleware (htae chin tae route mr htae)
+================
+const routes = [
+  {
+    path : '/profile',
+    name : 'profile',
+    component : profile,
+    beforeEnter : (to,from,next) => {
+      //middleware code
+      profile path ko m twr khin a loat loat
+      next();
+
+    }
+  }
+]
+*** next('login') => mr parameter route htae lox ya / m htae yin to.path ko auto twr
+*** global middleware a yin sitt / p ma local middleware sitt/ p ma component yae created() life cycle twy lr
+*** localStorage.setItem("auth", this.email);
+*** let auth = localStorage.getItem("auth");
+*** localStorage.clear() // clear all

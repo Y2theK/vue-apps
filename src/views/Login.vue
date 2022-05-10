@@ -5,9 +5,11 @@
         <div class="card">
           <div class="card-body">
             <h3 class="mt-2 mb-3">Login</h3>
-            <form action="" method="post" class="form">
+            <div class="alert alert-danger" v-if="message">{{ message }}</div>
+            <form action="" method="post" class="form" @submit.prevent="login">
               <div class="form-group mt-3">
                 <input
+                  v-model="email"
                   type="text"
                   name=""
                   id=""
@@ -17,7 +19,8 @@
               </div>
               <div class="form-group mt-3">
                 <input
-                  type="text"
+                  v-model="password"
+                  type="password"
                   name=""
                   id=""
                   class="form-control"
@@ -40,7 +43,25 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+      message: "",
+    };
+  },
+  methods: {
+    login() {
+      if (this.email == "admin@admin.com" && this.password == "asdfasdf") {
+        localStorage.setItem("auth", this.email);
+        this.$router.push("/profile");
+      } else {
+        this.message = "Please enter correct email and password";
+      }
+    },
+  },
+};
 </script>
 
 <style>

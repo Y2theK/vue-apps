@@ -33,9 +33,20 @@ const routes = [
     component: ProductDetail,
   },
   {
-    path: "/Profile",
+    path: "/profile",
     name: "profile",
     component: Profile,
+    // beforeEnter: (to, from, next) => {
+    //   //profile page m lr khin work
+    //   //next() so tr profie page route
+    //   // console.log("profile middleware");
+    //   // let auth = localStorage.getItem("auth");
+    //   // if (auth) {
+    //   //   next();
+    //   // } else {
+    //   //   next("/login");
+    //   // }
+    // },
   },
   {
     path: "/login",
@@ -49,4 +60,21 @@ const router = createRouter({
   routes,
 });
 
+//global middleware
+// bl page ma m lr khin work
+router.beforeEach((to, from, next) => {
+  //write middleware before next
+  //next m pr yin bl page ma a loat m loat
+  //next() so tr twr chin tae route
+  if (to.path === "/profile" || to.path === "/product") {
+    let auth = localStorage.getItem("auth");
+    if (auth) {
+      next();
+    } else {
+      next("/login");
+    }
+  } else {
+    next();
+  }
+});
 export default router;

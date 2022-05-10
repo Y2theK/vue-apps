@@ -41,6 +41,12 @@
               <a class="nav-link" aria-current="page" href="#">Login</a>
             </li></router-link
           >
+
+          <li class="nav-item">
+            <a class="nav-link" @click="logout" aria-current="page" href="#"
+              >Logout</a
+            >
+          </li>
         </ul>
 
         <!-- <form class="d-flex">
@@ -59,5 +65,11 @@
 <script>
 export default {
   name: "Menu",
+  methods: {
+    logout() {
+      localStorage.clear();
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
