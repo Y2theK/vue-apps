@@ -5,6 +5,7 @@ import ProductHome from "../views/ProductHome.vue";
 import ProductDetail from "../views/ProductDetail.vue";
 import Profile from "../views/Profile.vue";
 import Login from "../views/Login.vue";
+import notFound from "../views/notFound.vue";
 
 const routes = [
   {
@@ -52,6 +53,11 @@ const routes = [
     path: "/login",
     name: "login",
     component: Login,
+  },
+  {
+    path: "/:catchall(.*)",
+    name: "notFound",
+    component: notFound,
   },
 ];
 

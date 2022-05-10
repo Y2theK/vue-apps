@@ -3,10 +3,9 @@ middleware or navigation guard
 global middleware (twr mae route tine ko middleware khan)
 =================
 router ko export m loat khin mr 
-to => yout mae route
+to => twr mae route
 from => twr chin tae route
-next(); => middleware pass yin twr mae function
-next()  => m pr yin bl ma m twr
+next(); => middleware pass yin twr mae function / next() m pr yin bl ma m twr
 
 router.beforeEach((to,from,next)=>{
   //write middleware code //auth code
@@ -33,6 +32,49 @@ const routes = [
 ]
 *** next('login') => mr parameter route htae lox ya / m htae yin to.path ko auto twr
 *** global middleware a yin sitt / p ma local middleware sitt/ p ma component yae created() life cycle twy lr
+
 *** localStorage.setItem("auth", this.email);
 *** let auth = localStorage.getItem("auth");
 *** localStorage.clear() // clear all
+
+*** this.router.push('/profile')
+
+*** :to={name : 'product-detail', params : {id : product.id}}
+*** this.$route.params.id nae access
+
+with props params
+=================
+router.js yae route mr => props : true
+props : ['id'];
+this.id nae access
+
+router.js
+==========
+import {createRouter , createWebHistory} from 'vue-router';
+
+const routes = [{
+ path : '',
+ name : '',
+ component : '',
+}];
+
+const router = createRouter({
+  history : createWebHistory(process.env.BASE_URL);
+  routes : routes => key nae value tu yin property shorthand use loz ya => routes
+})
+export default router;
+
+catchall
+========
+{
+  path : '/:catchall(.*)',
+  name : notFound,
+  component : notFound
+}
+
+redirect
+========
+{
+  path : '/log-in',
+  redirect : '/login'
+}
