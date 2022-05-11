@@ -1,0 +1,85 @@
+Vue Router
+==========
+router/index.js မာ router ကို export
+app.vue mr import ပီးပြန်သုံး
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView
+  }, တွေကိုသတ်မှတ်
+
+// app.vue
+<router-link to="/">Home</router-link> နဲ့ချိတ် / or / 
+<router-link :to={name:'home'}>Home</router-link> နဲ့ bind ချိတ်
+<router-view/> က router မာ register ထားတဲ့ component ကို render
+
+
+Route Parameter
+===============
+const routes = [
+  {
+    path: '/detail/:id',
+    name: 'detail',
+    component: DetailView
+  }, သတ်မှတ်
+
+//app.uve
+<router-link :to={name:'detail',params:{id : detail.id}}>Home</router-link>
+
+//DetailView.vue
+$route.params.id နဲ့ access / 
+$route.params.slug
+
+Route Parameter as Props
+========================
+const routes = [
+  {
+    path: '/detail/:id',
+    name: 'detail',
+    component: DetailView
+    Props : true
+  }, သတ်မှတ်
+
+//app.uve
+<router-link :to={name:'detail',params:{id : detail.id}}>Home</router-link>
+
+//DetailView.vue
+props : ['id'] နဲ့ access
+
+
+Redirecting Route
+==============
+const routes = [
+  {
+    path: '/all-jobs',
+    redirect : '/jobs'
+  },
+  all-jobs ကိုသွားရင် jobs ကို redirect
+
+catchall 404
+==============
+const routes = [
+  {
+    path: '/:catchall(.*)',
+    name : 'notFound',
+    component : NotFount
+  },
+
+Programmic Navigation
+=====================
+this.$router.go(2)  // 2 step forward
+this.$router.go(-1)  // 1 step  backward
+this.$router.push(name: 'home') //redirect to home
+
+json server
+===========
+json-server can watch json file and give url for json resources in its server
+create data/db.json and fill json array
+install json-server/ npm install json-server
+watch file with json-server/ npx json-server --watch data/db.json
+
+composition api
+================
+group logic together in a setup() function
+eassily create reusable function/logic
